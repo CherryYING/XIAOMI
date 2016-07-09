@@ -1,88 +1,135 @@
 // JavaScript Document
-function tp()
-{
-	var a=document.getElementById("im").src;
-	
-	if(a=="file:///C:/Users/zhu/Desktop/%E5%B0%8F%E7%B1%B3%E7%BD%91%E7%AB%99/Demo/images/2.png")
-	{
-		document.getElementById("im").src="file:///C:/Users/zhu/Desktop/%E5%B0%8F%E7%B1%B3%E7%BD%91%E7%AB%99/Demo/images/3.png"
-		}
-		if(a=="file:///C:/Users/zhu/Desktop/%E5%B0%8F%E7%B1%B3%E7%BD%91%E7%AB%99/Demo/images/3.png")
-	{
-		document.getElementById("im").src="file:///C:/Users/zhu/Desktop/%E5%B0%8F%E7%B1%B3%E7%BD%91%E7%AB%99/Demo/images/2.png"
-		}
-	}
+
 	
 	function ina()
 {
-	if(inb()&&inc()&&ind())
+	inb();
+	inc();
+	ind();
+	ine();
+	if(inb()&&inc()&&ind()&&ine())
 	{
 		window.location="登录-1.html";
 		}
 	}
 	function inb()
 	{
-		
-		var b=document.my.t2.value;
+		var b=document.my.num.value;
 		if(b=="")
 		{
-			document.getElementById("sp2").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>密码不能为空";
-			document.my.t2.focus();
-			document.my.t2.select();
+			document.getElementById("s1").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>手机号不能为空";
+			document.getElementById("s1").style.color="red";
 			return false;
-			}
-			if(b.length!=11)
-			{
-				alert("手机格式不对!");
-				document.my.t2.select();
-				return false;
-				}
-				if(isNaN(b))
-				{
-					alert("手机号只能是纯数字!");
-					document.my.t2.select();
-					return false;
-					}
-					return true;
-		
 		}
-		function inc()
+		else if(b.length<11)
 		{
-			if(inb()){
-			var b=document.my.t3.value;
-			if(b=="")
-			{
-				alert("密码不能为空!");
-				document.my.t3.focus();
-				return false;
-				}
-			 if(b.length<6)
-			 {
-				 alert("密码最少6位!");
-				 document.my.t3.select();
-				 return false;
-				 }
-				 if(b.length>16)
-				 {
-					 alert("密码不能超过16位!");
-					 document.my.t3.select();
-					 return false;
-					 }
-					 return true;
-			}
-			}
-		function ind()
-		{
-			if(inc()){
-			var d=document.my.t4.value;
-			if(d==""||d.length!=6)
-			{
-				alert("验证码错误!");
-				tp();
-				document.my.t4.focus();
-				document.my.t4.select();
-				return false;
-				}
-				return true;
-			}
+			document.getElementById("s1").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>手机号只能是11位数字";
+			document.getElementById("s1").style.color="red";
+			return false;
 		}
+		else if(isNaN(b))
+		{
+			document.getElementById("s1").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>手机号只能是数字";
+			document.getElementById("s1").style.color="red";
+			return false;
+		}
+		else if(b.indexOf("1",0)==-1)
+		{
+			document.getElementById("s1").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>手机号格式不对";
+			document.getElementById("s1").style.color="red";
+			return false;
+		}
+		else
+		{
+			document.getElementById("s1").innerHTML="<i class='fa fa-check' aria-hidden='true'></i>手机号正确";
+			document.getElementById("s1").style.color="green";
+			return true;
+		}
+	}
+	function inc() {
+		var c=document.my.pwd1.value;
+		if(c=="")
+		{
+			document.getElementById("s2").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>密码不能为空";
+			document.getElementById("s2").style.color="red";
+			return false;
+		}
+		else if(c.length<8)
+		{
+			document.getElementById("s2").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>密码长度不够";
+			document.getElementById("s2").style.color="red";
+			return false;
+		}
+		else if (!isNaN(c))
+		{
+			document.getElementById("s2").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>密码不能为纯数字";
+			document.getElementById("s2").style.color="red";
+			return false;
+		}
+		else
+		{
+			document.getElementById("s2").innerHTML="<i class='fa fa-check' aria-hidden='true'></i>密码格式正确";
+			document.getElementById("s2").style.color="green";
+			return true;
+		}
+	}
+	function ind() {
+		var d=document.my.pwd2.value;
+		var x=document.my.pwd1.value;
+
+		if(d!=x)
+		{
+			document.getElementById("s3").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>两次密码不一致";
+			document.getElementById("s3").style.color="red";
+			return false;
+		}
+		else if(d==""&&d==x)
+		{
+			document.getElementById("s3").innerHTML="<i class='fa fa-times' aria-hidden='true'></i>密码不能为空";
+			document.getElementById("s3").style.color="red";
+			return false;
+		}
+		else
+		{
+			document.getElementById("s3").innerHTML="<i class='fa fa-check' aria-hidden='true'></i>两次密码输入一致";
+			document.getElementById("s3").style.color="green";
+			return true;
+		}
+
+	}
+
+function ine() {
+	var e=document.my.yz.value;
+	if(e=="")
+	{
+
+		return false;
+	}
+	else
+	{
+
+		return true;
+	}
+}
+var a=60;
+function yz() {
+	a--;
+	var y=document.getElementById("ss").innerHTML;
+
+		document.getElementById("ss").innerHTML="重新发送（"+a+"）";
+		document.getElementById("ss").style.backgroundColor="#D4D4D4";
+		document.getElementById("ss").style.color="#fff";
+		if(a>0)
+		{
+			setTimeout("yz()",1000);
+		}
+		else
+		{
+			document.getElementById("ss").innerHTML="发送手机验证码";
+			document.getElementById("ss").style.backgroundColor="#FF6700";
+			document.getElementById("ss").style.color="#fff";
+		}
+
+
+}
+
